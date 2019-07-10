@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-directive.html</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>自定义指令</h1>
+    <hr>
+    <div id="app">
+                <div v-qss ='color' id="demo">
+                    {{num}}
+                </div>
+                <div>
+                    <button @click='addNumber()'>Add</button>
+                </div>
+                <div>
+                        <button @click='jiebang()'>解绑</button>
+                    </div>
+    </div>
+    
+    <script type="text/javascript">
+
+    // Vue.directive('qss',function(el,binding,vnode){
+    //     el.style='color:'+binding.value;
+    // });
+                 Vue.directive('qss',{
+                    bind:function(el,binding,vnode){//被绑定
+                        el.style='color:'+binding.value;
+                        console.log('1 - bind');
+                    },
+                    inserted:function(){//绑定到节点
+                        console.log('2 - inserted');
+                    },
+                    update:function(){//组件更新
+                        console.log('3 - update');
+                    },
+                    componentUpdated:function(){//组件更新完成
+                        console.log('4 - componentUpdated');
+                    },
+                    unbind:function(){//解绑
+                        console.log('5 - unbind');
+                    }
+    });
+    var app = new Vue({
+        el:"#app",
+        data:{
+            num:10,
+            color:'red'
+        },
+        methods:{
+           addNumber:function(){
+               this.num++;
+            },
+            jiebang:function(){
+               app.$destroy();
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>

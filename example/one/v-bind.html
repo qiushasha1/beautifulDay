@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind.html</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind实例</h1>
+    <hr>
+    <div id="app">
+        <img v-bind:src="imgSrc"  width="200px">
+        <br/>
+        <div :class="className">1、绑定classA</div>
+        <div :class="{classA:isOk}">2、绑定class中的判断</div>
+        <div :class="[classA,classB]">3、绑定class中的数组</div>
+        <div :class="isOk?classA:classB">4、绑定class中的三元表达式判断</div>
+        <div :style="{color:red,fontSize:font}">5、绑定style</div>
+        <div :style="styleObject">6、用对象绑定style样式</div>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            imgSrc:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562569711528&di=3c501e0d5f3f1331a9dfe7e67ae4fda0&imgtype=0&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fbb3b7bf436cfe3a35279499190cf68ba.png",
+            className:"classA",
+            isOk:false,
+            classA:'classA',
+            classB:'classB',
+            red:'yellow',
+            font:'24px',
+            styleObject:{
+                    fontSize:'24px',
+                    color:'green'
+            }
+        
+        }
+    })
+    </script>
+    <style>
+            .classA{
+                color: red;
+            }
+           .classB{
+               font-size:150%
+           }
+          </style>
+</body>
+</html>

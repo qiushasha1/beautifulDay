@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set全局操作</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set全局操作</h1>
+    <hr>
+    <div id="app">
+        {{count}}   {{goods}}
+        <button onclick="add()"> add</button>
+        <br/>
+        <hr>
+        <ul>
+                <li v-for=" aa in arr">{{aa}}</li>
+            </ul>
+    </div>
+    <script type="text/javascript">
+    function add(){
+       // Vue.set(outData,'count',2);
+       // app.count++;
+        //outData.count++;
+       // outData.arr[1]='qq';  //这种单独改的话，JavaScript监听不到
+       Vue.set(outData,'goods','ww');
+       Vue.set(outData.arr,1,'ww');
+    }
+    var outData={
+         count:1,
+         goods:'car',
+         arr:['aaa','bbb','ccc']
+    }
+    var app = new Vue({
+        el:"#app",
+        data:outData
+    })
+    </script>
+</body>
+</html>

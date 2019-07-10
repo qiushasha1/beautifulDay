@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component2.html</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component 组件props 属性设置</h1>
+    <hr>
+    <div id="app">
+       <qqq from-here='China'></qqq><br/>
+       <qqq from-here='message'></qqq><br/>
+       <qss here ='wch'></qss>
+       
+    </div>
+    <script type="text/javascript">
+    //注册一个全局变量
+    Vue.component('qqq',{
+        template:`<div style="color:red;">Panda from {{ fromHere }}</div>`,
+        props:['fromHere']
+    })
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:'sichuan'
+        },
+        components:{
+            'qss':{
+                template:`<div style="color:red;">Panda from {{ here }}.</div>`,
+                props:['here']
+            }
+        }
+    })
+    </script>
+</body>
+</html>
